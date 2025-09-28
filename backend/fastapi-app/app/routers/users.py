@@ -7,7 +7,6 @@ from datetime import timedelta
 from bson import ObjectId
 from app.core.logger import logger
 from app.core.dependencies import get_current_user
-from fastapi import APIRouter, Depends
 from app.models.user import UserUpdate
 from app.core.logger import logger
 from app.db.mongo import db

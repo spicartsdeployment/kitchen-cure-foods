@@ -1,31 +1,39 @@
 import React, { useState } from "react";
+import { sendEnquiry } from "../services/EmailService";
 
 const FeedbackForm = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     phone: "",
     category: "",
     subject: "",
     message: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("formData:", formData);
 
-    // Construct mailto link
-    const mailtoLink = `mailto:support@kitchencurefoods.com?subject=${encodeURIComponent(
-      formData.subject
-    )}&body=${encodeURIComponent(
-      `Category: ${formData.category}\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    )}`;
+    const response = await sendEnquiry(
+      formData.name,
+      formData.email,
+      formData.message
+    );
 
-    // Open default mail app
-    window.location.href = mailtoLink;
+    console.log("response:", response);
+    alert(response);
+
+    // Clear form after successful submit
+    if (data.status === "success") {
+      setFormData(initialFormData);
+    }
   };
 
   return (

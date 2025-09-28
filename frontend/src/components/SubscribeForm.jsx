@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { subscribe } from "../services/AuthService";
+import { subscribe } from "../services/EmailService";
 
 export const SubscribeForm = () => {
   const [email, setEmail] = useState("");

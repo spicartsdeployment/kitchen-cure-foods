@@ -1,21 +1,37 @@
 import React, { useState } from "react";
+import { sendEnquiry } from "../services/EmailService";
 
 const AppointmentForm = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     phone: "",
     message: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Appointment booked!");
+    console.log("formData:", formData);
+
+    const response = await sendEnquiry(
+      formData.name,
+      formData.email,
+      formData.message
+    );
+
+    console.log("response:", response);
+    alert(response);
+
+    // Clear form after successful submit
+    if (data.status === "success") {
+      setFormData(initialFormData);
+    }
   };
 
   return (
