@@ -1,0 +1,60 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+*.env
+.env.*
+
+# Byte-compiled / distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Pytest / Coverage / Logs
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyCharm
+*.iml
+
+# FastAPI specific (if using uvicorn reload cache)
+*.db
+*.sqlite3
+
+# Docker
+docker-compose.override.yml
+
+# Local data / temp
+*.pid
+*.DS_Store
+
