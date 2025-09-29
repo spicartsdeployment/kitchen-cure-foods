@@ -112,7 +112,7 @@ const AppointmentForm = () => {
         <div className="px-4 flex justify-center">
           <button
             type="submit"
-            className="px-8 py-2 text-sm border border-green-800 bg-green-800 text-white rounded-lg hover:text-white hover:bg-green-900 hover:cursor-pointer hover:scale-120 active:scale-95 transform
+            className="px-8 py-2 text-sm border border-green-800 bg-green-800 text-white rounded-lg hover:text-white hover:bg-green-900 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
           >
             Submit

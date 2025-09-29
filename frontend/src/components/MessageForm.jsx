@@ -177,7 +177,7 @@ const FeedbackForm = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-green-700 text-white text-sm px-8 py-2 rounded-lg hover:cursor-pointer hover:bg-green-800 hover:scale-120 active:scale-95 transform
+            className="bg-green-700 text-white text-sm px-8 py-2 rounded-lg hover:cursor-pointer hover:bg-green-800 hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
           >
             Submit Message

@@ -132,7 +132,7 @@ const SignupPage = () => {
             <button
               type="submit"
               className="text-white py-2 px-8 rounded-4xl text-xs font-semibold mt-4
-               bg-gradient-to-r from-green-800 to-green-500 hover: cursor-pointer hover:scale-120 active:scale-95 transform transition-transform duration-300"
+               bg-gradient-to-r from-green-800 to-green-500 hover: cursor-pointer hover:scale-105 active:scale-95 transform transition-transform duration-300"
             >
               Sign Up
             </button>

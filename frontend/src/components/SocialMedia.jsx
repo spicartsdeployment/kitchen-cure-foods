@@ -8,7 +8,7 @@ export default function SocialMediaLinks() {
         href="https://twitter.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-sky-500 hover:cursor-pointer hover:scale-120 active:scale-95 transform
+        className="hover:text-sky-500 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
         <Twitter size={20} />
@@ -17,7 +17,7 @@ export default function SocialMediaLinks() {
         href="https://instagram.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-pink-500 hover:cursor-pointer hover:scale-120 active:scale-95 transform
+        className="hover:text-pink-500 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
         <Instagram size={20} />
@@ -26,7 +26,7 @@ export default function SocialMediaLinks() {
         href="https://youtube.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-red-600 hover:cursor-pointer hover:scale-120 active:scale-95 transform
+        className="hover:text-red-600 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
         <Youtube size={20} />

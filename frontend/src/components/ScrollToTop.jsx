@@ -55,7 +55,7 @@ export const ScrollToTop = () => {
         w-12 h-12 rounded-full shadow-lg
       bg-green-800
         backdrop:blur-xl
-        hover:cursor-pointer hover:scale-120 text-white
+        hover:cursor-pointer hover:scale-105 text-white
         active:scale-95 transform
         transition-transform duration-150
         focus:outline-none
