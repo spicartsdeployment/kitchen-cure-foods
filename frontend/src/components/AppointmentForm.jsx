@@ -1,21 +1,38 @@
 import React, { useState } from "react";
+import { scheduleAppointment } from "../services/EmailService";
 
 const AppointmentForm = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     phone: "",
     message: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Appointment booked!");
+    console.log("formData:", formData);
+
+    const response = await scheduleAppointment(
+      formData.name,
+      formData.email,
+      formData.phone,
+      formData.message
+    );
+
+    console.log("response:", response?.data?.message);
+    alert(response?.data?.message);
+
+    // Clear form after successful submit
+    if (response?.data?.status === "success") {
+      setFormData(initialFormData);
+    }
   };
 
   return (
@@ -33,7 +50,7 @@ const AppointmentForm = () => {
             placeholder="enter your name"
             value={formData.name}
             onChange={handleChange}
-            className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-600 w-full"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />
         </div>
@@ -49,7 +66,7 @@ const AppointmentForm = () => {
               placeholder="enter email"
               value={formData.email}
               onChange={handleChange}
-              className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-600 w-full"
+              className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
               required
             />
           </div>
@@ -63,10 +80,16 @@ const AppointmentForm = () => {
               id="phone"
               placeholder="enter phone number"
               value={formData.phone}
-              onChange={handleChange}
-              pattern="[0-9]*"
+              onChange={(e) => {
+                const val = e.target.value.replace(/\D/g, ""); // only digits
+                if (val.length <= 10) {
+                  setFormData((prev) => ({ ...prev, phone: val }));
+                }
+              }}
               inputMode="numeric"
-              className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-600 w-full"
+              pattern="\d{10}"
+              maxLength={10}
+              className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
               required
             />
           </div>
@@ -81,7 +104,7 @@ const AppointmentForm = () => {
             placeholder="enter your message"
             value={formData.message}
             onChange={handleChange}
-            className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-600 w-full"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             rows="4"
             required
           />

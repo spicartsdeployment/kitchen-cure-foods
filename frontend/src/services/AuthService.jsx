@@ -18,7 +18,6 @@ export const createUser = async (
       gender,
     });
     console.log("create api response: ", response);
-    // const response = await mockLogin({ email, password });
 
     return response.data;
   } catch (error) {
@@ -40,7 +39,6 @@ export const loginUser = async (email, password) => {
   try {
     const response = await api.post("/users/login", { email, password });
     console.log("login api response: ", response);
-    // const response = await mockLogin({ email, password });
 
     if (response.data?.access_token) {
       localStorage.setItem("authToken", response.data.access_token);
@@ -61,7 +59,6 @@ export const get_me = async () => {
     const accessToken = localStorage.getItem("authToken");
     const response = await api.get("/users/me", { accessToken });
     console.log("me api response: ", response);
-    // const response = await mockLogin({ email, password });
 
     if (response.data?.access_token) {
       localStorage.setItem("authToken", response.data.access_token);
@@ -84,26 +81,4 @@ export const resetPassword = async ({ email, dob, new_password }) => {
   } catch (error) {
     throw error.response?.data.detail;
   }
-};
-
-export const subscribe = async (email) => {
-  try {
-    const response = await api.post(`/users/subscribe/${email}`);
-    console.log("subscribe api response: ", response);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data.detail;
-  }
-};
-
-// Fake JWT generator (dev purpose only)
-const generateFakeJWT = (payload) => {
-  const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
-  const body = btoa(
-    JSON.stringify({
-      ...payload,
-      exp: Math.floor(Date.now() / 1000) + 3600, // 1 hour expiry
-    })
-  );
-  return `${header}.${body}.fake-signature`;
 };
