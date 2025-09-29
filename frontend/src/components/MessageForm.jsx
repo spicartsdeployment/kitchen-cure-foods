@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sendEnquiry } from "../services/EmailService";
+import { sendEmailMessage } from "../services/EmailService";
 
 const FeedbackForm = () => {
   const initialFormData = {
@@ -19,19 +19,21 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formData:", formData);
 
-    const response = await sendEnquiry(
+    const response = await sendEmailMessage(
       formData.name,
       formData.email,
-      formData.message
+      formData.phone,
+      formData.message,
+      formData.category,
+      formData.subject
     );
 
     console.log("response:", response);
-    alert(response);
+    alert(response.data.message);
 
     // Clear form after successful submit
-    if (data.status === "success") {
+    if (response.data.status === "success") {
       setFormData(initialFormData);
     }
   };
@@ -49,7 +51,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="name"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Full Name<span className="text-red-600">*</span>
           </label>
@@ -60,7 +62,7 @@ const FeedbackForm = () => {
             placeholder="Enter Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />
         </div>
@@ -69,7 +71,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="email"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Email<span className="text-red-600">*</span>
           </label>
@@ -80,7 +82,7 @@ const FeedbackForm = () => {
             placeholder="Enter Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />
         </div>
@@ -89,7 +91,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="phone"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Phone Number<span className="text-red-600">*</span>
           </label>
@@ -102,7 +104,7 @@ const FeedbackForm = () => {
             pattern="[0-9]*"
             inputMode="numeric"
             placeholder="Enter Your Phone Number"
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />
         </div>
@@ -111,7 +113,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="category"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Category<span className="text-red-600">*</span>
           </label>
@@ -120,7 +122,7 @@ const FeedbackForm = () => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           >
             <option value="">Select Category</option>
@@ -135,7 +137,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="subject"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Subject<span className="text-red-600">*</span>
           </label>
@@ -146,7 +148,7 @@ const FeedbackForm = () => {
             placeholder="Brief description of your enquiry"
             value={formData.subject}
             onChange={handleChange}
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />
         </div>
@@ -155,7 +157,7 @@ const FeedbackForm = () => {
         <div>
           <label
             htmlFor="message"
-            className="text-sm font-medium block mb-1 text-gray-500"
+            className="text-xs font-medium block mb-1 text-gray-500"
           >
             Message<span className="text-red-600">*</span>
           </label>
@@ -166,7 +168,7 @@ const FeedbackForm = () => {
             placeholder="Please provide details about your enquiry.."
             value={formData.message}
             onChange={handleChange}
-            className="text-sm w-full rounded-lg border border-gray-300 shadow-sm px-3 py-2"
+            className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           ></textarea>
         </div>

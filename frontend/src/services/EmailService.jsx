@@ -10,16 +10,40 @@ export const subscribe = async (email) => {
   }
 };
 
-export const sendEnquiry = async (name, email, message) => {
+export const sendEmailMessage = async (
+  name,
+  email,
+  phone,
+  message,
+  category,
+  subject
+) => {
   try {
-    const response = await api.post("/email/send-enquiry/", {
+    const response = await api.post("/email/send-message/", {
       name,
       email,
+      phone,
+      message,
+      category,
+      subject,
+    });
+
+    return response;
+  } catch (error) {
+    throw error.response?.data || { message: "Request failed" };
+  }
+};
+
+export const scheduleAppointment = async (name, email, phone, message) => {
+  try {
+    const response = await api.post("/email/schedule-appointment/", {
+      name,
+      email,
+      phone,
       message,
     });
-    console.log("sendEnquiry api response: ", response);
 
-    return response.data;
+    return response;
   } catch (error) {
     throw error.response?.data || { message: "Request failed" };
   }

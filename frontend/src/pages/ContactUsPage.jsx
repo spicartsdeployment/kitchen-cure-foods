@@ -1,7 +1,7 @@
 import React from "react";
 import { ReachUsModes, FAQS, Hotline } from "../constants";
 import ScrollToTop from "../components/ScrollToTop";
-import FeedbackForm from "../components/FeedbackForm";
+import MessageForm from "../components/MessageForm";
 
 const handleButtonClick = (mode) => {
   switch (mode.type) {
@@ -82,7 +82,7 @@ const ContactUsPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
         {/* Left Column */}
         <div className="bg-green-100 rounded-xl p-6 flex ">
-          <FeedbackForm />
+          <MessageForm />
         </div>
 
         {/* Right Column with 3 rows */}
