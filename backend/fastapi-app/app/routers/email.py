@@ -66,7 +66,7 @@ async def send_message(form: EmailMessage):
             <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
               <tr>
                 <td style="padding: 20px; text-align: center; background: #4f46e5; color: #ffffff; border-radius: 8px 8px 0 0;">
-                  <h2 style="margin: 0;">New Enquiry</h2>
+                  <h2 style="margin: 0;">New Message Received</h2>
                 </td>
               </tr>
               <tr>
@@ -143,7 +143,7 @@ async def send_message(form: ScheduleAppointment):
             <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
               <tr>
                 <td style="padding: 20px; text-align: center; background: #4f46e5; color: #ffffff; border-radius: 8px 8px 0 0;">
-                  <h2 style="margin: 0;">New Enquiry</h2>
+                  <h2 style="margin: 0;">New Appointment Request</h2>
                 </td>
               </tr>
               <tr>
