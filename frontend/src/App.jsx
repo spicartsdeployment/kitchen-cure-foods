@@ -12,9 +12,8 @@ import ConsultationPage from "./pages/ConsultationPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import NotFound from "./pages/NotFoundPage";
-import { ProfilePage } from "./pages/ProfilePage";
+import ProfilePage from "./pages/ProfilePage";
 import { AuthContext } from "./context/AuthContext";
-import ProfilePage2 from "./pages/ProfilePage2";
 
 export function App() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -26,7 +25,7 @@ export function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/profile" element={<ProfilePage2 />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/reset-password" element={<PasswordResetPage />} />
         {/* <Route
           path="/about"

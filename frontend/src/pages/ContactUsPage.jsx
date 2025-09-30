@@ -137,7 +137,7 @@ const ContactUsPage = () => {
 
             <div className="flex justify-center">
               <button
-                className="px-8 py-1 text-sm border-2 border-green-800 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:cursor-pointer hover:scale-120 active:scale-95 transform
+                className="px-8 py-1 text-sm border-2 border-green-800 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
                 onClick={handleHotlineClick}
               >
