@@ -58,7 +58,7 @@ const TestimonialCarousel = () => {
                   "
                 </p>
                 <button
-                  className="mt-4 text-right px-3 py-1 hover:text-gray-400 transition"
+                  className="mt-4 text-right px-3 py-1 hover:cursor-pointer hover:text-gray-400 transition"
                   onClick={() => setSelectedTestimonial(t)}
                 >
                   Read More...

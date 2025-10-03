@@ -48,3 +48,12 @@ export const scheduleAppointment = async (name, email, phone, message) => {
     throw error.response?.data || { message: "Request failed" };
   }
 };
+
+export const consultation = async (ConsultationForm) => {
+  try {
+    const response = await api.post("/email/consult/", ConsultationForm);
+    return response;
+  } catch (error) {
+    throw error.response?.data || { message: "Request failed" };
+  }
+};

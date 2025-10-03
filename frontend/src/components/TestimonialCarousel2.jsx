@@ -18,18 +18,18 @@ const TestimonialCarousel2 = () => {
   return (
     <div className="flex flex-col items-center justify-center py-10 w-full">
       {/* Header row with nav buttons */}
-      <div className="flex items-center justify-between w-full max-w-4xl px-6 mb-1">
+      <div className="flex items-center justify-between w-full max-w-4xl p-6 mb-1">
         <h2 className="text-4xl font-medium">Customer Testimonials</h2>
         <div className="flex gap-2">
           <button
             onClick={prev}
-            className="border border-gray-500 rounded-lg text-green-700 px-3 py-1 hover:bg-green-800 hover:text-white transition"
+            className="border border-gray-500 rounded-lg text-green-700 px-3 py-1 hover:cursor-pointer hover:bg-green-800 hover:text-white transition"
           >
             <ChevronLeftIcon size={25} />
           </button>
           <button
             onClick={next}
-            className="border border-gray-500 rounded-lg text-green-700 px-3 py-1 hover:bg-green-800 hover:text-white transition"
+            className="border border-gray-500 rounded-lg text-green-700 px-3 py-1 hover:cursor-pointer hover:bg-green-800 hover:text-white transition"
           >
             <ChevronRightIcon size={25} />
           </button>

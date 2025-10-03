@@ -2,8 +2,19 @@ import React from "react";
 import { ConsultationBenefits } from "../constants";
 import ScrollToTop from "../components/ScrollToTop";
 import ConsultationSliderForm from "../components/ConsultationSliderForm";
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 const ConsultationPage = () => {
+  const location = useLocation();
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (location.state?.showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location.state]);
+
   return (
     <section>
       <div className="container mx-auto py-25 px-6 md:px-20 lg:px-25 flex flex-col items-center bg-gray-50">
@@ -48,9 +59,9 @@ const ConsultationPage = () => {
       </div>
 
       {/* Book Your Consultation */}
-      <div className="mb-4 flex flex-col justify-center">
+      <div className="mb-4 mt-4 py-4 flex flex-col justify-center" ref={formRef}>
         <h4 className="px-4 py-4 text-4xl text-center font-semibold leading-tight">
-          Book Your Consultation
+          Book Your Free Consultation
         </h4>
         <div className="px-8 py-4 flex flex-wrap justify-center bg-green-100 gap-6">
           <ConsultationSliderForm />

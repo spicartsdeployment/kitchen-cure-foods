@@ -6,12 +6,14 @@ import TestimonialCarousel from "../components/Testimonials";
 import StatsCounter from "../components/StatsCounter";
 import ScrollToTop from "../components/ScrollToTop";
 import TestimonialCarousel2 from "../components/TestimonialCarousel2";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const handleBookConsultation = () => {
     console.log("Book Consultation clicked!");
-    // Example: navigate to signup page
-    // navigate("/signup");
+    navigate("/consult", { state: { showForm: true } });
   };
 
   return (
@@ -72,8 +74,8 @@ const HomePage = () => {
       </div>
 
       {/* How It Works */}
-      <div className="mb-4 flex flex-col bg-green-50 justify-center">
-        <h4 className="px-4 py-4 text-3xl text-center sm:text-xl md:text-[52px] font-thin leading-tight text-green-800">
+      <div className="mb-4 py-8 flex flex-col bg-green-50 justify-center">
+        <h4 className="px-4 py-8 text-3xl text-center sm:text-xl md:text-[52px] font-thin leading-tight text-green-800">
           How It Works
         </h4>
         <div className="relative flex justify-center gap-15 px-6 py-8 flex-wrap">
