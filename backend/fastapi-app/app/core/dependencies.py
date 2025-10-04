@@ -21,10 +21,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     )
 
     try:
-        print('get_current_user called.')
-        print('token-',token)
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.ALGORITHM)
-        print('payload = jwt.decode')
         user_id: str = payload.get("sub") 
         if user_id is None:
             raise credentials_exception
@@ -35,6 +32,9 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     if user is None:
         raise credentials_exception
 
+    # Remove password safely
+    user.pop("password", None)
+        
     # Convert ObjectId to string for easier use
     user["_id"] = str(user["_id"])
     return user

@@ -300,7 +300,6 @@ export const profileFields = [
   },
   { label: "Address", name: "address", type: "text", editable: true },
   { label: "Country", name: "country", type: "text", editable: false },
-  { label: "City", name: "city", type: "text", editable: true },
   {
     label: "State",
     name: "state",
@@ -345,4 +344,5 @@ export const profileFields = [
       "Puducherry",
     ],
   },
+  { label: "City", name: "city", type: "text", editable: true },
 ];

@@ -1,5 +1,16 @@
 import { api } from "../api";
 
+export const getUser = async (id) => {
+  try {
+    const response = await api.get(`/users/${id}`);
+    console.log("get user api response: ", response);
+
+    return response.data;
+  } catch (error) {
+    throw error.response?.data.detail;
+  }
+};
+
 export const createUser = async (
   userName,
   email,

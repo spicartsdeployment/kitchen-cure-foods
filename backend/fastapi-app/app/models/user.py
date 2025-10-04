@@ -1,6 +1,10 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str
+    
 class UserCreate(BaseModel):
     userName: str
     email: EmailStr
@@ -12,11 +16,11 @@ class UserCreate(BaseModel):
 
 class UserUpdate(BaseModel):
     userName: str
-    email: EmailStr
-    password: str
     phone: str
-    dob: str
     gender: str
+    address: str
+    state: str
+    city: str
     
 class UserLogin(BaseModel):
     email: EmailStr

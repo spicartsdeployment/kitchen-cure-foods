@@ -1,15 +1,14 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
-from app.models.user import UserCreate, UserLogin, UserResponse, ResetPasswordRequest, Subscribe
+from app.models.user import UserCreate, UserLogin, UserResponse, ResetPasswordRequest, Subscribe, UserUpdate, TokenResponse
 from app.services.auth import hash_password, verify_password, create_access_token
 from app.core.config import settings
 from datetime import timedelta
 from bson import ObjectId
 from app.core.logger import logger
 from app.core.dependencies import get_current_user
-from app.models.user import UserUpdate
-from app.core.logger import logger
 from app.db.mongo import db
+from datetime import datetime
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -17,21 +16,60 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 
 @router.get("/me")
 async def read_users_me(current_user: dict = Depends(get_current_user)):
-    return {"user": current_user}
+    """ Fetch the current authenticated user's details. """
+    return UserResponse(
+        id=current_user["_id"],
+        userName=current_user.get("userName", ""),
+        email=current_user.get("email", ""),
+        role=current_user.get("role", ""),
+    )
+
+@router.get("/{user_id}", response_model=dict)
+async def get_user(user_id: str):
+    """
+    Fetch user details by user_id.
+    """
+    # Validate ObjectId
+    if not ObjectId.is_valid(user_id):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid user ID")
+
+    # Fetch user from DB
+    user = await db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    # Remove sensitive fields
+    user.pop("password", None)
+
+    # Convert ObjectId to string
+    user["_id"] = str(user["_id"])
+
+    return {"user": user}
 
 @router.post("/create", response_model=UserResponse)
 async def create_user(user: UserCreate):
     logger.info("create_user API called")
     
+    # Check if email already exists
     existing = await db.users.find_one({"email": user.email})
     if existing:
         raise HTTPException(status_code=400, detail="Email already exists!!")
     
+    # Hash password
     hashed_pwd = hash_password(user.password)
+    
+    # Prepare user document
+    now = datetime.now()
     user_dict = user.dict()
     user_dict["password"] = hashed_pwd
+    user_dict["createdDate"] = now
+    user_dict["updatedDate"] = now
+    user_dict["country"] = "India"  # default country
+    
+    # Insert into DB
     result = await db.users.insert_one(user_dict)
 
+    # Return response
     return UserResponse(
         id=str(result.inserted_id),
         userName=user.userName,
@@ -39,7 +77,7 @@ async def create_user(user: UserCreate):
         role=user.role
     )
 
-@router.post("/login")
+@router.post("/login", response_model=TokenResponse)
 async def login(user: UserLogin):
     db_user = await db.users.find_one({"email": user.email})
     
@@ -69,9 +107,6 @@ async def update_user(
     - A user can edit their own profile.
     - Admin roles can edit any user.
     """
-
-    print('user_update - ',user_update)
-
     # Convert user_id string → ObjectId
     try:
         oid = ObjectId(user_id)
@@ -89,10 +124,6 @@ async def update_user(
 
     update_data = user_update.dict(exclude_unset=True)
 
-    # Hash new password if provided
-    if "password" in update_data and update_data["password"]:
-        update_data["password"] = hash_password(update_data.pop("password"))
-
     # Role change allowed only for admins
     if "role" in update_data and current_user["role"] not in ["SuperAdmin", "SystemAdmin"]:
         update_data.pop("role")
@@ -100,6 +131,8 @@ async def update_user(
     if not update_data:
         raise HTTPException(status_code=400, detail="No valid fields to update")
 
+    update_data["updatedDate"] = datetime.now()
+    
     # Update in DB
     await db.users.update_one({"_id": oid}, {"$set": update_data})
 

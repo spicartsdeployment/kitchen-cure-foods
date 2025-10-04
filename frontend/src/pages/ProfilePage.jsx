@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Pencil, Save, CircleX } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
-import { updateUser, get_me } from "../services/AuthService";
+import { updateUser, get_me, getUser } from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
 import { profileFields } from "../constants";
@@ -13,11 +13,11 @@ const ProfilePage = () => {
   const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [dateTime, setDateTime] = useState("");
+  const [updatedDateTime, setUpdatedDateTime] = useState("");
   const [formData, setFormData] = useState({
     _id: "",
     userName: "",
     email: "",
-    password: "",
     phone: "",
     dob: "",
     gender: "",
@@ -28,8 +28,9 @@ const ProfilePage = () => {
   });
   const [originalData, setOriginalData] = useState(profile); // backup
 
-  useEffect(() => {
-    const now = new Date();
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
     const options = {
       day: "2-digit",
       month: "short",
@@ -38,36 +39,44 @@ const ProfilePage = () => {
       minute: "2-digit",
       hour12: true,
     };
-    const formatted = now.toLocaleString("en-GB", options);
-    setDateTime(formatted);
+    return date.toLocaleDateString("en-GB", options);
+  };
+
+  useEffect(() => {
+    const now = new Date();
+    setDateTime(formatDate(now));
   }, []);
 
   // Fetch profile
   useEffect(() => {
     const fetchProfile = async () => {
       setError("");
+
       try {
         if (!token) {
           navigate("/login");
           return;
         }
 
-        const data = await get_me();
+        const decoded = await get_me();
+        const data = await getUser(decoded.id); // Fetch full user details from backend
 
         setProfile(data.user);
+
         setFormData({
           _id: data.user._id || "",
           userName: data.user.userName || "",
           email: data.user.email || "",
-          password: data.user.password || "",
           phone: data.user.phone || "",
           dob: data.user.dob || "",
           gender: data.user.gender || "",
-          address: data.user.address || "123, Main Street",
-          city: data.user.city || "Bangalore",
-          state: data.user.state || "Karnataka",
+          address: data.user.address || "",
+          city: data.user.city || "",
+          state: data.user.state || "",
           country: data.user.country || "India",
         });
+
+        setUpdatedDateTime(formatDate(data.user.updatedDate));
       } catch (err) {
         console.error("Error fetching profile:", err);
         setError(err || "Error fetching profile!");
@@ -88,7 +97,7 @@ const ProfilePage = () => {
       setIsEditing(true);
     } else {
       // saving
-      // await handleSave();
+      await handleUpdate();
     }
   };
 
@@ -97,7 +106,7 @@ const ProfilePage = () => {
     setIsEditing(false);
   };
 
-  const handleSave = async () => {
+  const handleUpdate = async () => {
     setError("");
     try {
       if (!profile._id) {
@@ -113,6 +122,7 @@ const ProfilePage = () => {
       setFormData(updated.user); // sync editable copy
       setIsEditing(false);
       alert(updated.msg);
+      window.location.href = "/profile"; // reload page
     } catch (err) {
       console.error("Error updating profile:", err);
       setError(err || "Error updating profile!");
@@ -162,16 +172,16 @@ const ProfilePage = () => {
         ${!isEditing ? "bg-cyan-600" : "bg-green-600"}`}
               >
                 {isEditing ? <Save size={15} /> : <Pencil size={15} />}
-                {isEditing ? "Save" : "Edit"}
+                {isEditing ? "Update" : "Edit"}
               </button>
             </div>
           </div>
 
           {/* Dynamic Form */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {profileFields.map((field) => (
               <div key={field.name}>
-                <label className="text-sm font-light block mb-1 text-gray-600">
+                <label className="text-xs px-1 block mb-1 text-gray-600">
                   {field.label}
                 </label>
 
@@ -228,13 +238,11 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="p-6">
-          <p className="text-xs text-center">
-            These contact details will be used for all future communications.
-          </p>
-          <p className="text-xs text-center py-2 mb-4">
-            Details last updated on -
-            <span className="font-semibold ml-1">{dateTime}</span>
+        <div className="">
+          <p className="text-xs text-center text-gray-500 py-4 px-2 border-t border-gray-100">
+            Note: These contact details will be used for all future
+            communications. Last updated on -
+            <span className="font-semibold ml-1">{updatedDateTime}</span>
           </p>
         </div>
       </div>

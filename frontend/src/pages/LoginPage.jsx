@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { loginUser } from "../services/AuthService";
 import { getProfileFromToken } from "../services/JwtService";
 import { useNavigate } from "react-router-dom";
-import { User } from "lucide-react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -26,39 +25,27 @@ const LoginPage = () => {
     }
   };
 
-  const SocialIcon = ({ icon }) => {
-    return (
-      <a
-        href="#"
-        className="border border-gray-300 rounded-full w-10 h-10 flex justify-center items-center text-gray-600 hover:scale-110 transition"
-      >
-        {icon}
-      </a>
-    );
-  };
-
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-gray-200 to-indigo-200">
+    <div className="flex items-center justify-center h-screen bg-green-50">
       <div className="relative bg-white rounded-4xl shadow-lg overflow-hidden w-[40vh] max-w-full min-h-[50vh] m-4">
         <div className={"absolute top-0 left-0 h-full w-full opacity-100 z-0"}>
           <form
             onSubmit={handleSubmit}
             className="h-full flex flex-col justify-center items-center px-10"
           >
-            <div className="flex space-x-3 mb-4">
-              <SocialIcon icon={<User size={18} />} />
-            </div>
-            <h1 className="text-2xl font-bold mb-4">Sign In</h1>
-            <span className="text-sm mb-2">
-              enter registered email & password
+            <h3 className="text-xl font-bold">Welcome Back</h3>
+            <span className="font-light text-sm mt-2 mb-4 text-gray-400">
+              Log in to continue your health journey
             </span>
+
+            {/* input fields */}
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full p-3 mb-2 rounded-lg bg-gray-200 text-sm"
+              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             />
             <input
               type="password"
@@ -66,18 +53,54 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full p-3 mb-2 rounded-lg bg-gray-200 text-sm"
+              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             />
-            <a href="/reset-password" className="text-xs text-gray-500 my-2">
-              Forget Your Password?
-            </a>
-            <button
-              type="submit"
-              className="text-white py-2 px-8 rounded-4xl text-xs font-semibold mt-4
-               bg-gradient-to-r from-indigo-800 to-indigo-500 hover: cursor-pointer hover:scale-105 active:scale-95 transform transition-transform duration-300"
-            >
-              Login
-            </button>
+
+            {/* Remember me and Forgot Password */}
+            <div className="w-full flex justify-between text-center text-xs py-2 px-1">
+              <div>
+                <input type="checkbox" id="remember" className="mr-1" />
+                <label htmlFor="remember" className="text-xs text-gray-600">
+                  Remember Me
+                </label>
+              </div>
+              <a href="/reset-password" className="text-xs text-green-500">
+                Forgot Password?
+              </a>
+            </div>
+
+            {/* Login Button */}
+            <div className="w-full justify-center items-center py-2">
+              <button
+                type="submit"
+                className="w-full text-white py-2 px-8 rounded-lg text-sm 
+               bg-green-500 hover:cursor-pointer hover:bg-green-600"
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  window.location.href =
+                    import.meta.env.VITE_BACKEND_URL + "/auth/google";
+                }}
+                className="flex w-full justify-center items-center text-green-500 border py-2 px-8 rounded-lg text-sm mt-2 hover:cursor-pointer hover:bg-gray-200"
+              >
+                <img
+                  src="/src/assets/google-icon.png"
+                  alt="Google"
+                  className="w-4 h-4 mr-2"
+                />
+                <span>Login with Google</span>
+              </button>
+            </div>
+
+            <span className="text-xs text-gray-400 mt-2">
+              Don't have an account?
+              <a href="/signup" className="text-green-500 ml-1">
+                Register Here
+              </a>
+            </span>
             {error && <p className="text-red-500 mt-2">{error}</p>}
           </form>
         </div>
