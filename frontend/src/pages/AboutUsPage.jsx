@@ -85,7 +85,7 @@ const AboutUsPage = () => {
           </h3>
         </div>
 
-        <div className="px-4 py-4 flex flex-col text text-justify justify-center rounded-xl border-2 border-green-800 bg-green-100">
+        <div className="px-4 py-4 flex flex-col text-justify justify-center rounded-xl border-2 border-green-800 bg-green-100">
           <p className="w-full px-4 py-2 font-light text-lg">
             "At Kitchen Cure Foods, our mission is deeply personal."
           </p>
@@ -125,17 +125,19 @@ const AboutUsPage = () => {
             </ul>
           </div>
 
-          <p className="w-full px-4 py-4 font-semibold text-3xl text-center rounded-xl border border-red-500 bg-red-200 text-green-800">
+          <p className="w-full px-4 py-4 font-semibold text-2xl text-center rounded-xl border border-red-500 bg-red-200 text-green-800">
             We don't believe in marketing noise.
             <br />
             We don't push for referals or fake offers.
             <br />
             We only ask one thing:
             <br />
-            If you feel better, if you heal - share our story, as your own.
+            <span className="text-3xl font-bold italic py-6 block">
+              "If you feel better, if you heal - share our story, as your own."
+            </span>
           </p>
           <p className="w-full px-4 py-2 font-light text-lg">
-            Kitchen Cure Foods is more than a brand. It's a living syatem - made
+            Kitchen Cure Foods is more than a brand. It's a living system - made
             to heal holistically - from your plate, to the planet, to the people
             who grow your food.
           </p>
@@ -148,13 +150,13 @@ const AboutUsPage = () => {
             <br />
             Kiriti Redy Mandyam
             <br />
-            Fouonder, Kitchen Cure Foods
+            Founder, Kitchen Cure Foods
             <br />
             Heals Holistically
           </p>
         </div>
       </div>
-            <ScrollToTop />
+      <ScrollToTop />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { testimonials } from "../constants";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, X } from "lucide-react";
 
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -70,7 +70,7 @@ const TestimonialCarousel = () => {
       </div>
 
       {/* Navigation Buttons bottom-left */}
-      <div className="py-2 bottom-4 flex gap-2">
+      <div className="py-4 bottom-4 flex gap-2">
         <button
           onClick={prevSlide}
           className="border border-gray-500 rounded-lg text-green-700 px-3 py-1 hover:bg-green-800 hover:text-white hover:cursor-pointer transition"
@@ -99,7 +99,7 @@ const TestimonialCarousel = () => {
               onClick={() => setSelectedTestimonial(null)}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
             >
-              ✕
+              <X />
             </button>
             {/* <img
               src={selectedTestimonial.img}

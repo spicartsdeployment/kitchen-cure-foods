@@ -69,20 +69,27 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-green-50">
-      <div className="relative bg-white rounded-4xl shadow-lg overflow-hidden w-[50vh] max-w-full min-h-[70vh] m-4">
-        <div className="absolute top-0 left-0 h-full w-full opacity-100 z-0">
-          <form
-            onSubmit={handleSignup}
-            noValidate
-            className="h-full flex flex-col justify-center items-center px-10"
-          >
-            <h3 className="text-xl font-bold">Create Your Account</h3>
-            <span className="font-light text-sm mt-2 mb-4 text-gray-400">
-              Join us and take the first step toward better health{" "}
-              <span> 🌱 </span>
-            </span>
+    <div className="flex items-center justify-center min-h-screen bg-gray-300">
+      <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden w-[90vw] max-w-4xl m-4 min-h-[70vh]">
+        {/* Left side - Logo */}
+        <div className="flex-1 bg-green-700 flex items-center justify-center p-6 md:p-8">
+          <img
+            src="/src/assets/kcf-logo.jpg"
+            alt="Logo"
+            className="max-w-[90%] h-auto object-contain"
+          />
+        </div>
 
+        {/* Right side - Signup form */}
+        <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-10 overflow-y-auto">
+          <h3 className="text-2xl font-bold text-green-700 mb-2 text-center">
+            Create Your Account
+          </h3>
+          <span className="font-light text-sm mb-6 text-gray-400 text-center">
+            Join us and take the first step toward better health 🌱
+          </span>
+
+          <form onSubmit={handleSignup} noValidate className="w-full max-w-sm">
             {/* Full Name */}
             <input
               type="text"
@@ -90,10 +97,11 @@ const SignupPage = () => {
               value={userName}
               onChange={(e) => {
                 setName(e.target.value);
-                setStepErrors((prev) => ({ ...prev, name: "" })); // clear error
+                setStepErrors((prev) => ({ ...prev, name: "" }));
               }}
               required
-              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
+              className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600"
             />
             {stepErrors.name && (
               <span className="w-full text-left text-red-500 text-xs mb-2">
@@ -108,10 +116,11 @@ const SignupPage = () => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                setStepErrors((prev) => ({ ...prev, email: "" })); // clear error
+                setStepErrors((prev) => ({ ...prev, email: "" }));
               }}
               required
-              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
+              className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600"
             />
             {stepErrors.email && (
               <span className="w-full text-left text-red-500 text-xs mb-2">
@@ -125,16 +134,14 @@ const SignupPage = () => {
               placeholder="Phone Number"
               value={phone}
               onChange={(e) => {
-                // allow only numbers
-                const val = e.target.value.replace(/\D/g, ""); // only digits
-                if (val.length <= 10) setPhone(val); // limit to 10 digits
-                setStepErrors((prev) => ({ ...prev, phone: "" })); // clear error
+                const val = e.target.value.replace(/\D/g, "");
+                if (val.length <= 10) setPhone(val);
+                setStepErrors((prev) => ({ ...prev, phone: "" }));
               }}
               required
-              inputMode="numeric"
-              pattern="\d{10}"
               maxLength={10}
-              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
+              className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600"
             />
             {stepErrors.phone && (
               <span className="w-full text-left text-red-500 text-xs mb-2">
@@ -150,22 +157,21 @@ const SignupPage = () => {
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
-                  setStepErrors((prev) => ({ ...prev, password: "" })); // clear error
-                  // Clear confirm password if password changes
+                  setStepErrors((prev) => ({ ...prev, password: "" }));
                   if (confirmPassword) {
                     setConfirmPassword("");
                     setStepErrors((prev) => ({ ...prev, confirmPassword: "" }));
                   }
                 }}
                 required
-                className="text-sm w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 pr-10"
+                className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600 pr-10"
               />
-              {/* Eye Icon */}
               <button
                 type="button"
-                onMouseDown={() => setShowPassword(true)} // show password while pressed
-                onMouseUp={() => setShowPassword(false)} // hide when released
-                onMouseLeave={() => setShowPassword(false)} // also hide if mouse moves away
+                onMouseDown={() => setShowPassword(true)}
+                onMouseUp={() => setShowPassword(false)}
+                onMouseLeave={() => setShowPassword(false)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 hover:cursor-pointer"
               >
                 {password ? <Eye size={18} /> : null}
@@ -185,21 +191,20 @@ const SignupPage = () => {
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
-                  setStepErrors((prev) => ({ ...prev, confirmPassword: "" })); // clear error
+                  setStepErrors((prev) => ({ ...prev, confirmPassword: "" }));
                 }}
                 required
-                className={`text-sm w-full rounded-lg border shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:ring-1 pr-10 ${
+                className={`text-sm w-full rounded-lg border shadow px-3 py-2 placeholder:text-xs hover:border-gray-600 focus:outline-none focus:ring-1 pr-10 ${
                   confirmPassword && confirmPassword !== password
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-green-500 focus:border-green-600 focus:ring-green-600"
+                    : "border-gray-300 focus:border-gray-600 focus:ring-gray-600"
                 }`}
               />
-              {/* Eye Icon */}
               <button
                 type="button"
-                onMouseDown={() => setShowConfirmPassword(true)} // show password while pressed
-                onMouseUp={() => setShowConfirmPassword(false)} // hide when released
-                onMouseLeave={() => setShowConfirmPassword(false)} // also hide if mouse moves away
+                onMouseDown={() => setShowConfirmPassword(true)}
+                onMouseUp={() => setShowConfirmPassword(false)}
+                onMouseLeave={() => setShowConfirmPassword(false)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 hover:cursor-pointer"
               >
                 {confirmPassword ? <Eye size={18} /> : null}
@@ -215,13 +220,13 @@ const SignupPage = () => {
             <Tooltip text="Date of Birth" position="top">
               <input
                 type="date"
-                placeholder="Date of Birth"
                 value={dob}
                 onChange={(e) => {
                   setDob(e.target.value);
-                  setStepErrors((prev) => ({ ...prev, dob: "" })); // clear error
+                  setStepErrors((prev) => ({ ...prev, dob: "" }));
                 }}
-                className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
+                className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600 pr-1"
               />
               {stepErrors.dob && (
                 <span className="w-full text-left text-red-500 text-xs mb-2">
@@ -235,9 +240,10 @@ const SignupPage = () => {
               value={gender}
               onChange={(e) => {
                 setGender(e.target.value);
-                setStepErrors((prev) => ({ ...prev, gender: "" })); // clear error
+                setStepErrors((prev) => ({ ...prev, gender: "" }));
               }}
-              className="text-sm mb-3 w-full rounded-lg border border-green-500 shadow px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
+              className="text-sm mb-3 w-full rounded-lg border border-gray-300 shadow px-3 py-2 placeholder:text-xs 
+                     hover:border-gray-600 focus:outline-none focus:border-gray-500 focus:ring-gray-600 pr-1"
             >
               <option value="" disabled>
                 Gender
@@ -252,12 +258,11 @@ const SignupPage = () => {
               </span>
             )}
 
-            {/* SignUp Button */}
-            <div className="w-full justify-center items-center py-2">
+            {/* Buttons */}
+            <div className="w-full py-2">
               <button
                 type="submit"
-                className="w-full text-white py-2 px-8 rounded-lg text-sm 
-               bg-green-500 hover:cursor-pointer hover:bg-green-600"
+                className="w-full font-semibold text-white py-2 rounded-lg text-sm bg-green-700 hover:bg-green-800 hover:cursor-pointer"
               >
                 Register
               </button>
@@ -267,7 +272,7 @@ const SignupPage = () => {
                   window.location.href =
                     import.meta.env.VITE_BACKEND_URL + "/auth/google";
                 }}
-                className="flex w-full justify-center items-center text-green-500 border py-2 px-8 rounded-lg text-sm mt-2 hover:cursor-pointer hover:bg-gray-200"
+                className="flex w-full font-semibold justify-center items-center text-green-500 border py-2 rounded-lg text-sm mt-2 hover:bg-gray-300 hover:text-green-800 hover:cursor-pointer"
               >
                 <img
                   src="/src/assets/google-icon.png"
@@ -278,13 +283,13 @@ const SignupPage = () => {
               </button>
             </div>
 
-            <span className="text-xs text-gray-400 mt-2">
+            <span className="text-xs text-gray-400 mt-2 block text-center">
               Already have an account?
               <a href="/login" className="text-green-500 ml-1">
                 Login Here
               </a>
             </span>
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
           </form>
         </div>
       </div>

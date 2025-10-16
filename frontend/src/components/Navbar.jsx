@@ -7,6 +7,7 @@ import LoginButton from "../components/LoginButton";
 import SignupButton from "../components/SignupButton";
 
 export default function Navbar() {
+  const { isLoggedIn } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,36 +24,37 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+      <div className="container mx-auto flex items-center justify-between px-4">
         {/* Logo/Image */}
         <div className="flex items-center">
           <a href="/">
             <img
               src="src\assets\kcf-logo.jpg"
               alt="Logo"
-              className="h-15 w-auto"
+              className="h-20 w-auto"
             />
           </a>
         </div>
 
-        {/* Center Navigation (hidden on mobile) */}
-        <div className="hidden md:flex space-x-8">
-          <a href="/consult" className="hover:text-green-800">
-            Consultation Room
-          </a>
-          <a href="/products" className="hover:text-green-800">
-            Products
-          </a>
-          <a href="/about" className="hover:text-green-800">
-            About Us
-          </a>
-          <a href="/resources" className="hover:text-green-800">
-            Resources
-          </a>
-          <a href="/contact" className="hover:text-green-800">
-            Contact Us
-          </a>
-        </div>
+        {isLoggedIn && (
+          <div className="hidden md:flex space-x-8">
+            <a href="/consult" className="hover:text-green-800">
+              Consultation Room
+            </a>
+            <a href="/products" className="hover:text-green-800">
+              Products
+            </a>
+            <a href="/about" className="hover:text-green-800">
+              About Us
+            </a>
+            <a href="/resources" className="hover:text-green-800">
+              Resources
+            </a>
+            <a href="/contact" className="hover:text-green-800">
+              Contact Us
+            </a>
+          </div>
+        )}
 
         {/* Right Side Buttons */}
         <div className="hidden md:flex space-x-4">

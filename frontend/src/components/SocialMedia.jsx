@@ -11,7 +11,7 @@ export default function SocialMediaLinks() {
         className="hover:text-sky-500 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
-        <Twitter size={20} />
+        <Twitter size={15} />
       </a>
       <a
         href="https://instagram.com"
@@ -20,7 +20,7 @@ export default function SocialMediaLinks() {
         className="hover:text-pink-500 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
-        <Instagram size={20} />
+        <Instagram size={15} />
       </a>
       <a
         href="https://youtube.com"
@@ -29,7 +29,7 @@ export default function SocialMediaLinks() {
         className="hover:text-red-600 hover:cursor-pointer hover:scale-105 active:scale-95 transform
         transition-transform duration-300"
       >
-        <Youtube size={20} />
+        <Youtube size={15} />
       </a>
     </div>
   );

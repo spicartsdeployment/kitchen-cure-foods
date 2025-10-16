@@ -4,7 +4,7 @@ const VideoPlayer = ({ src }) => {
   return (
     <div className="flex justify-center w-full bg-green-50">
       <video
-        className="rounded-3xl shadow-lg max-w-full"
+        className="rounded-3xl shadow-lg max-w-full border border-gray-300"
         controls
         autoPlay
         muted

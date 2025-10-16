@@ -320,7 +320,7 @@ const ConsultationSliderForm = () => {
             required={field.required || false}
             className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2"
           >
-            <option value="">{field.label}</option>
+            <option value="" disabled>{field.label}</option>
             {field.options.map((opt, i) => (
               <option key={i} value={opt}>
                 {opt}
