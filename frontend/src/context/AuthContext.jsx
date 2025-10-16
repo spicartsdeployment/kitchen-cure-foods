@@ -9,10 +9,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [authChecked, setAuthChecked] = useState(false);
 
   // Check token on mount
   useEffect(() => {
+    console.log("AuthProvider mounted, checking token...");
     const token = getLocalAccessToken();
+    console.log("Retrieved token:", token);
+
     if (token) {
       try {
         const decoded = jwtDecode(token);
@@ -30,6 +34,8 @@ export const AuthProvider = ({ children }) => {
         logout();
       }
     }
+
+    setAuthChecked(true);
   }, []);
 
   const login = (userData, accessToken) => {
@@ -43,10 +49,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isLoggedIn = !!user;
-  const token = getLocalAccessToken()
+  const token = getLocalAccessToken();
 
   return (
-    <AuthContext.Provider value={{ user, login, token, logout, isLoggedIn }}>
+    <AuthContext.Provider value={{ user, login, token, logout, isLoggedIn, authChecked }}>
       {children}
     </AuthContext.Provider>
   );

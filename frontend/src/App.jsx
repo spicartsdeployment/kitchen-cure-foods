@@ -16,29 +16,62 @@ import ProfilePage from "./pages/ProfilePage";
 import { AuthContext } from "./context/AuthContext";
 
 export function App() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, authChecked } = useContext(AuthContext);
+  console.log("App component mounted, isLoggedIn:", isLoggedIn);
+
+  if (!authChecked) {
+    // show loading spinner or blank page
+    return <></>;
+  }
 
   return (
-    <div className="w-full overflow-hidden">
-      {<Header />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/reset-password" element={<PasswordResetPage />} />
-        {/* <Route
-          path="/about"
-          element={isLoggedIn ? <AboutUsPage /> : <Navigate to="/login" />}
-        /> */}
-        <Route path="/about" element={<AboutUsPage />} />
-        <Route path="/contact" element={<ContactUsPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/consult" element={<ConsultationPage />} />
-        <Route path="/resources" element={<ResourcesPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {<Footer />}
-    </div>
+    console.log("Rendering App component..."),
+    (
+      <div className="w-full overflow-hidden">
+        {<Header />}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/signup"
+            element={isLoggedIn ? <SignupPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/profile"
+            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/reset-password"
+            element={
+              isLoggedIn ? <PasswordResetPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/about"
+            element={isLoggedIn ? <AboutUsPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/contact"
+            element={isLoggedIn ? <ContactUsPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/products"
+            element={isLoggedIn ? <ProductsPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/consult"
+            element={
+              isLoggedIn ? <ConsultationPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/resources"
+            element={isLoggedIn ? <ResourcesPage /> : <Navigate to="/login" />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {<Footer />}
+      </div>
+    )
   );
 }

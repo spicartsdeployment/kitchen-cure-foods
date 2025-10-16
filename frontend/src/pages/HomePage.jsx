@@ -20,12 +20,18 @@ const HomePage = () => {
 
   return (
     <section>
-
       <div className="container mx-auto py-32 px-6 md:px-20 lg:px-32 flex flex-col md:flex-row items-center gap-12">
         {/* Left Text Section */}
         <div className="flex-1 text-center md:text-left">
           <h2 className="text-5xl sm:text-6xl md:text-[82px] font-thin leading-tight !text-green-800">
             Healing Begins in Your Kitchen
+            <span>
+              <img
+                src="/src/assets/plant.gif"
+                alt="plant"
+                className="w-16 h-16 inline align-middle"
+              />
+            </span>
           </h2>
           <h2 className="mt-4 text-2xl">
             Personalized Nutrition & Holistic Diabetes Care in Your Community

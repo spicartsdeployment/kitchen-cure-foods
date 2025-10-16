@@ -21,14 +21,14 @@ export const SubscribeForm = () => {
   return (
     <>
       <form onSubmit={handleSubscribe} className="space-y-4">
-        <div className="flex items-center justify-center gap-2 mt-6">
+        <div className="flex px-6 py-4 items-center justify-center gap-1">
           {/* Email Input */}
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="enter your email"
-            className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-600 w-full"
+            placeholder="Enter your Email"
+            className="shadow-sm text-sm px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 w-full"
             required
           />
 

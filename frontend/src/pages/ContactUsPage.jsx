@@ -117,7 +117,10 @@ const ContactUsPage = () => {
 
             <div className="px-4 py-4 flex flex-col gap-4">
               {FAQS.map((item, index) => (
-                <div className="bg-green-100 border border-green-500 rounded-xl p-4">
+                <div
+                  key={index}
+                  className="bg-green-100 border border-green-500 rounded-xl p-4"
+                >
                   <h2 className="text-lg text-center font-semibold mb-3">
                     {item.title}
                   </h2>
@@ -147,7 +150,7 @@ const ContactUsPage = () => {
           </div>
         </div>
       </div>
-            <ScrollToTop />
+      <ScrollToTop />
     </section>
   );
 };

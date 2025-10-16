@@ -19,7 +19,16 @@ const TestimonialCarousel2 = () => {
     <div className="flex flex-col items-center justify-center py-10 w-full">
       {/* Header row with nav buttons */}
       <div className="flex items-center justify-between w-full max-w-4xl p-6 mb-1">
-        <h2 className="text-4xl font-medium">Customer Testimonials</h2>
+        <h2 className="text-4xl font-medium">
+          Customer Testimonials
+          <span>
+            <img
+              src="/src/assets/Running-heart.gif"
+              alt="Loading..."
+              className="w-6 h-auto inline align-middle ml-2 mb-1"
+            />
+          </span>
+        </h2>
         <div className="flex gap-2">
           <button
             onClick={prev}

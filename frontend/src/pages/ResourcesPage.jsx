@@ -104,7 +104,7 @@ const ResourcesPage = () => {
           <VideoCarousel />
         </div>
 
-        <div className="px-8 py-8 flex flex-col justify-center">
+        <div className="px-8 py-8 flex flex-col justify-center bg-gray-100 w-full rounded-lg">
           <h2 className="px-6 py-4 text-center text-4xl font-bold">
             Stay Updated with Our Latest Resources
           </h2>

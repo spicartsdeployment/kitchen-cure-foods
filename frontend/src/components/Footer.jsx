@@ -140,7 +140,7 @@ export default function Footer() {
           </ul>
 
           <div className="flex flex-col justify-between items-center">
-            <h2 className="text-xs font-semibold py-2">FOLLOW US</h2>
+            <h2 className="text-xs font-semibold py-2">Follow Us</h2>
             <SocialMediaLinks />
           </div>
         </div>
