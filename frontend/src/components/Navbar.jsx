@@ -37,9 +37,12 @@ export default function Navbar() {
         </div>
 
         {isLoggedIn && (
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 font-light">
             <a href="/consult" className="hover:text-green-800">
               Consultation Room
+            </a>
+            <a href="/services" className="hover:text-green-800">
+              Services
             </a>
             <a href="/products" className="hover:text-green-800">
               Products

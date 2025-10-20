@@ -30,7 +30,7 @@ export const UserMenu = ({ user, logout }) => {
         className="flex items-center space-x-2 hover:cursor-pointer"
       >
         <UserCircle className="w-5 h-5 text-green-700 hover:text-green-800 hover:cursor-pointer" />
-        <span className="text-xs">{user?.name}</span>
+        <span className="text-sm">{user?.name}</span>
       </button>
 
       {/* Dropdown Menu */}

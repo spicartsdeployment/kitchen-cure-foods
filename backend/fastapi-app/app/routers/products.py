@@ -1,24 +1,27 @@
 from fastapi import APIRouter
+from app.models.products import Product
 from app.db.mongo import db
-from app.models.product import ProductResponse
-# from app.services.auth import role_required
+# import razorpay, os
 
 router = APIRouter(prefix="/products", tags=["Products"])
 
-@router.get("/", response_model=list[ProductResponse])
-# @role_required("admin")
-async def get_products(current_user):
-    products_cursor = db.products.find()
-    products = []
-    async for product in products_cursor:
-        products.append(ProductResponse(
-            id=str(product["_id"]),
-            name=product["name"],
-            price=product["price"]
-        ))
+@router.get("/get")
+async def get_products():
+    products = await db.products.find().to_list(100)
+    for p in products:
+        p["_id"] = str(p["_id"])
     return products
 
-@router.get("/special")
-# @role_required("admin", "manager")
-async def special_access(current_user):
-    return {"message": f"Welcome {current_user['username']} with role {current_user['role']}!"}
+@router.post("/create")
+async def add_product(product: Product):
+    result = await db.products.insert_one(product.dict())
+    return {"inserted_id": str(result.inserted_id)}
+
+# @router.post("/create-order")
+# async def create_order(data: dict):
+#     order = razorpay_client.order.create({
+#         "amount": data["amount"] * 100,
+#         "currency": "INR",
+#         "payment_capture": 1
+#     })
+#     return order

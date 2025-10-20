@@ -13,9 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   // Check token on mount
   useEffect(() => {
-    console.log("AuthProvider mounted, checking token...");
     const token = getLocalAccessToken();
-    console.log("Retrieved token:", token);
 
     if (token) {
       try {

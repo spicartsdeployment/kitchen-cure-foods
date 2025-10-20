@@ -7,10 +7,7 @@ const StatsCounter = () => {
   return (
     <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 py-16">
       {stats.map((item, index) => (
-        <div
-          key={index}
-          className="p-6 flex flex-col items-center w-auto"
-        >
+        <div key={index} className="p-6 flex flex-col items-center w-auto">
           <h3 className="text-5xl text-green-800 mb-2">
             <span>
               <CountUp
@@ -22,7 +19,9 @@ const StatsCounter = () => {
               />
             </span>
             {item.title.toLowerCase().includes("rating") ? (
-              <Star className="w-8 h-8 text-yellow-500 inline-block ml-2" />
+              <span className="w-8 h-8 text-yellow-500 inline-block ml-2">
+                ★
+              </span>
             ) : (
               <span className="ml-1">+</span>
             )}

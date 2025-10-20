@@ -114,7 +114,7 @@ const HomePage = () => {
       </div>
 
       <div className="py-6 mb-4 flex flex-col justify-center">
-        <h2 className="py-4 text-4xl text-center">Testimonials</h2>
+        <h2 className="py-4 font-medium text-4xl text-center">Testimonials</h2>
         <TestimonialCarousel />
       </div>
 

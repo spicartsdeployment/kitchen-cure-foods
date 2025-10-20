@@ -12,9 +12,9 @@ export default function Footer() {
     navigate("/contact");
   };
   return (
-    <footer className="py-4 w-full">
+    <footer className="py-4 w-full bg-zinc-50 border-t border-gray-300">
       <div
-        className="container mx-auto px-6 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4"
+        className="container mt-6 mx-auto px-6 lg:px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4"
         id="Footer"
       >
         {/* 1st Column */}
@@ -22,7 +22,7 @@ export default function Footer() {
           <img
             src="src\assets\kcf-logo.jpg"
             alt="Logo"
-            className="h-20 w-auto"
+            className="h-auto w-full"
           />
         </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
             {/* 2nd Column */}
             <div className="text-center">
               <h4></h4>
-              <ul className="space-y-2 text-xs">
+              <ul className="space-y-2 text-sm">
                 <li>
                   <a href="/consult" className="hover:text-green-800">
                     Consultation Room
@@ -47,8 +47,8 @@ export default function Footer() {
 
             {/* 3rd Column */}
             <div className="text-center">
-              <h4 className="text-xs font-bold mb-4">COMPANY</h4>
-              <ul className="space-y-2 text-xs">
+              <h4 className="text-sm font-bold mb-4">COMPANY</h4>
+              <ul className="space-y-2 text-sm">
                 <li>
                   <a href="/about" className="hover:text-green-800">
                     About
@@ -74,8 +74,8 @@ export default function Footer() {
 
             {/* 4th Column */}
             <div className="text-center">
-              <h4 className="text-xs font-bold mb-4">RESOURCES</h4>
-              <ul className="space-y-2 text-xs">
+              <h4 className="text-sm font-bold mb-4">RESOURCES</h4>
+              <ul className="space-y-2 text-sm">
                 <li>
                   <a href="/blog" className="hover:text-green-800">
                     Blog
@@ -110,10 +110,10 @@ export default function Footer() {
 
         {/* 5th Column */}
         <div className="flex flex-col space-y-4 justify-between items-center">
-          <ul className="space-y-2 text-xs">
+          <ul className="space-y-2 text-sm">
             <li>
               <button
-                className="px-6 py-1 text-sm border border-gray-400 bg-gray-300 text-gray-500 rounded-lg hover:text-gray-800 hover:bg-white hover:cursor-pointer hover:scale-105 active:scale-95 transform transition-transform duration-300 flex items-center gap-2"
+                className="px-6 py-2 mb-4 text-sm border border-green-800  rounded-lg hover:bg-green-800 hover:text-white cursor-pointer transform transition-transform duration-300 flex items-center gap-2"
                 onClick={handleGetInTouch}
               >
                 Get in Touch <ArrowRight size={15} />
@@ -124,7 +124,7 @@ export default function Footer() {
                 href="tel:+917337292216"
                 className="hover:text-green-800 flex items-center gap-2 px-2"
               >
-                <Phone size={20} className="px-1 py-1 border rounded-full" />{" "}
+                <Phone size={20} className="px-1 py-1 border rounded-full" />
                 +91 7337292216
               </a>
             </li>
@@ -133,14 +133,14 @@ export default function Footer() {
                 href="mailto:admin@kcf.com?subject:Testing_Email"
                 className="hover:text-green-800 flex items-center gap-2 px-2"
               >
-                <Mail size={20} className="px-1 py-1 border rounded-full" />{" "}
+                <Mail size={20} className="px-1 py-1 border rounded-full" />
                 admin@kcf.com
               </a>
             </li>
           </ul>
 
           <div className="flex flex-col justify-between items-center">
-            <h2 className="text-xs font-semibold py-2">Follow Us</h2>
+            <h2 className="text-sm font-semibold py-2">Follow Us</h2>
             <SocialMediaLinks />
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function Footer() {
         <p className="text-[10px]">
           Copyright &copy; 2025 KCF Pvt Limited. All rights reserved.
         </p>
-        <a href="#" className="text-[10px] text-gray-400">
+        <a href="/terms-and-conditions" className="text-[10px] text-gray-400">
           Terms of Use & Privacy Policy
         </a>
       </div>
