@@ -2,7 +2,7 @@ import { api } from "../api";
 
 export const getProducts = async () => {
   try {
-    const response = await api.get("/products/get");
+    const response = await api.get("/products/getProducts");
     console.log("getProducts api response: ", response);
 
     return response.data;
@@ -13,8 +13,9 @@ export const getProducts = async () => {
 
 export const getProductById = async (id) => {
   try {
-    const response = await axios.get(`/products/${id}`);
+    const response = await api.get(`/products/${id}`);
     console.log("getProductById api response: ", response);
+
     return response.data;
   } catch (error) {
     throw error.response?.data.detail;

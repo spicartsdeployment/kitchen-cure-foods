@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import { UserMenu } from "./UserMenu";
 import LoginButton from "../components/LoginButton";
 import SignupButton from "../components/SignupButton";
+import MiniCart from "./MiniCart";
 
 export default function Navbar() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -60,9 +61,12 @@ export default function Navbar() {
         )}
 
         {/* Right Side Buttons */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex">
           {user ? (
-            <UserMenu user={user} logout={logout} />
+            <>
+              <MiniCart />
+              <UserMenu user={user} logout={logout} />
+            </>
           ) : (
             <>
               <LoginButton onLogin={handleLogin} />

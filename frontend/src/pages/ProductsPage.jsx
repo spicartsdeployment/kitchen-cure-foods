@@ -42,9 +42,16 @@ const ProductsPage = () => {
             />
           ))
         ) : (
-          <h2 className="px-2 py-8 text-2xl text-center col-span-full text-gray-600">
-            Oops! No products available.
-          </h2>
+          <div className="col-span-full flex flex-col justify-center items-center py-8">
+            <img
+              src="/src/assets/no-products-available.png"
+              alt="no-products-available"
+              className="w-30 h-auto mb-4"
+            />
+            <h2 className="text-2xl text-center text-gray-600">
+              Oops! No products available.
+            </h2>
+          </div>
         )}
       </div>
     </div>

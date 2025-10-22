@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { UserCircle } from "lucide-react";
+import { UserCircle, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const UserMenu = ({ user, logout }) => {
@@ -27,38 +27,46 @@ export const UserMenu = ({ user, logout }) => {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 hover:cursor-pointer"
+        className="flex items-center space-x-1 p-2 hover:bg-gray-100 rounded-lg transition"
       >
-        <UserCircle className="w-5 h-5 text-green-700 hover:text-green-800 hover:cursor-pointer" />
-        <span className="text-sm">{user?.name}</span>
+        <UserCircle size={24} className="text-gray-700 hover:cursor-pointer" />
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 border-gray-600 bg-gray-100 rounded-2xl shadow-lg py-2 z-50 animate-fade-in">
-          <h4 className="px-4 py-2 font-semibold text-xs text-black border-b border-gray-300">
+        <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-50 animate-fade-in">
+          <h4 className="px-4 py-2 text-sm font-medium line-clamp-1 border-b border-gray-300">
             {user?.email}
           </h4>
           <button
             onClick={() => handleNavigate("/profile")}
-            className="block w-full font-light text-left text-xs rounded-4xl px-4 py-2 transition-all duration-200 
+            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
              hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
           >
-            Profile
+            <span className="flex justify-start">
+              <ChevronRight size={15} />
+              Profile
+            </span>
           </button>
           <button
             onClick={() => handleNavigate("/")}
-            className="block w-full font-light text-left text-xs rounded-4xl px-4 py-2 transition-all duration-200 
+            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
              hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
           >
-            Orders
+            <span className="flex justify-start">
+              <ChevronRight size={15} />
+              Orders
+            </span>
           </button>
           <button
             onClick={logout}
-            className="block w-full font-light text-left text-xs rounded-4xl px-4 py-2 transition-all duration-200 
+            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
              hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
           >
-            Logout
+            <span className="flex justify-start">
+              <ChevronRight size={15} />
+              Logout
+            </span>
           </button>
         </div>
       )}

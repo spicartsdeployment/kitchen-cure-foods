@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {PlusCircle, MinusCircle} from 'lucide-react'
+import { PlusCircle, MinusCircle } from "lucide-react";
 
 const ProductCard = ({ product, onAdd }) => {
   const [quantity, setQuantity] = useState(0);
@@ -36,7 +36,7 @@ const ProductCard = ({ product, onAdd }) => {
       {/* Product Image */}
       <div className="relative cursor-pointer" onClick={handleCardClick}>
         <img
-          src={product.images?.[0]}
+          src={product.images?.[0] || "src/assets/placeholder-image.png"}
           alt={product.name}
           className="w-full h-64 object-cover rounded-t-2xl"
         />
@@ -71,16 +71,15 @@ const ProductCard = ({ product, onAdd }) => {
           </button>
         ) : (
           <div className="mt-4 flex items-center justify-center space-x-3">
-            <button
-              onClick={decreaseQty}
-            >
-              <MinusCircle size={20} className="text-green-700 cursor-pointer"/>
+            <button onClick={decreaseQty}>
+              <MinusCircle
+                size={20}
+                className="text-green-700 cursor-pointer"
+              />
             </button>
             <span className="text-lg font-medium">{quantity}</span>
-            <button
-              onClick={increaseQty}
-            >
-              <PlusCircle size={20} className="text-green-700 cursor-pointer"/>
+            <button onClick={increaseQty}>
+              <PlusCircle size={20} className="text-green-700 cursor-pointer" />
             </button>
           </div>
         )}

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTopAuto from "./components/ScrollToTopAuto";
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
@@ -16,6 +17,7 @@ import PasswordResetPage from "./pages/PasswordResetPage";
 import NotFound from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import CartPage from "./pages/CartPage";
 import { AuthContext } from "./context/AuthContext";
 
 export function App() {
@@ -29,11 +31,15 @@ export function App() {
   return (
     <div className="w-full overflow-hidden">
       {<Header />}
+      <ScrollToTopAuto />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+        <Route
+          path="/terms-and-conditions"
+          element={<TermsAndConditionsPage />}
+        />
         <Route
           path="/profile"
           element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
@@ -63,6 +69,10 @@ export function App() {
         <Route
           path="/product/:id"
           element={isLoggedIn ? <ProductDetail /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/cart"
+          element={isLoggedIn ? <CartPage /> : <Navigate to="/login" />}
         />
         <Route
           path="/consult"

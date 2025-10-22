@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,43 +7,24 @@ import { CartContext } from "../context/CartContext";
 import { getProductById } from "../services/productService";
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const { addToCart } = useContext(CartContext);
 
-  const sampleProduct = {
-    _id: "sample123",
-    name: "Ubtan Body Cleanser - 12 Organic Herbs to remove Tan & Under arm darkening",
-    caption: "Natural Glow Ubtan Body Cleanser",
-    description:
-      "This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits. This is a sample product description. It provides details about the product, its features, and benefits.",
-    price: 199,
-    quantity: 100,
-    rating: 4.5,
-    reviews: 150,
-    images: [
-      "https://yavuzceliker.github.io/sample-images/image-1.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-1.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-1.jpg",
-    ],
-  };
-
   useEffect(() => {
-    setProduct(sampleProduct);
-  }, []);
-
-  //   useEffect(() => {
-  //     const fetchProduct = async () => {
-  //       try {
-  //         const data = await getProductById(id);
-  //         setProduct(data);
-  //       } catch (err) {
-  //         console.error("Error fetching product:", err);
-  //       }
-  //     };
-  //     fetchProduct();
-  //   }, [id]);
+    const fetchProduct = async () => {
+      try {
+        const data = await getProductById(id);
+        console.log("Fetched product data: ", data);
+        setProduct(data?.product);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+      }
+    };
+    fetchProduct();
+  }, [id]);
 
   if (!product)
     return (
@@ -69,15 +50,15 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="min-h-screen p-12" style={{ backgroundColor: "#f8fff8" }}>
-      <div className="max-w-6xl container mx-auto mt-8 px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="min-h-screen p-12">
+      <div className="max-w-6xl container bg-gray-50 mx-auto mt-8 px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left: Image Carousel */}
         <div className="flex flex-col items-center">
           <Slider {...sliderSettings} className="w-full">
             {product.images?.map((img, idx) => (
               <div key={idx} className="flex justify-center">
                 <img
-                  src={img}
+                  src={img || "src/assets/placeholder-image.png"}
                   alt={product.name}
                   className="max-h-[500px] object-contain rounded-xl"
                 />
@@ -108,11 +89,11 @@ const ProductDetail = () => {
                 <br /> Rs. {product.price}
               </span>
             </h2>
-            <h4 className="text-lg font-medium py-4 text-gray-500">
+            <h4 className="text-lg font-light py-4 text-gray-500">
               Quantity: {product.quantity}g
             </h4>
 
-            <h2 className="text-2xl font-semibold py-4">Description</h2>
+            <h2 className="text-lg font-medium">Description</h2>
             <p className="font-light text-gray-700 mb-6 leading-relaxed">
               {product.description}
             </p>
@@ -145,7 +126,13 @@ const ProductDetail = () => {
               </div>
             )}
 
-            <button className="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg transition text-lg font-medium">
+            <button
+              onClick={() => {
+                handleAddToCart();
+                navigate("/cart");
+              }}
+              className="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg transition text-lg font-medium"
+            >
               Buy Now
             </button>
           </div>
