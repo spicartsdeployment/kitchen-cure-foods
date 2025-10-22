@@ -61,7 +61,7 @@ export default function Navbar() {
         )}
 
         {/* Right Side Buttons */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex space-x-1">
           {user ? (
             <>
               <MiniCart />
