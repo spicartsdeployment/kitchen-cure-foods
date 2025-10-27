@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import CartPage from "./pages/CartPage";
+import OrdersPage from "./pages/OrdersPage"
 import { AuthContext } from "./context/AuthContext";
 
 export function App() {
@@ -73,6 +74,10 @@ export function App() {
         <Route
           path="/cart"
           element={isLoggedIn ? <CartPage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/orders"
+          element={isLoggedIn ? <OrdersPage /> : <Navigate to="/login" />}
         />
         <Route
           path="/consult"

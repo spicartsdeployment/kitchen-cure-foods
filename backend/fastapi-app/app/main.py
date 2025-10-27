@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import users, products, email
+from app.routers import users, products, email, orders
 from app.core.logger import logger
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -21,6 +21,7 @@ app.add_middleware(
 # Routers
 app.include_router(users.router)
 app.include_router(products.router)
+app.include_router(orders.router)
 app.include_router(email.router)
 
 @app.get("/")

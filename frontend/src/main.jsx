@@ -7,7 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

@@ -40,28 +40,25 @@ export const UserMenu = ({ user, logout }) => {
           </h4>
           <button
             onClick={() => handleNavigate("/profile")}
-            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
-             hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
+            className="block w-full font-light text-left text-sm px-4 py-2 transition-all duration-200 hover:bg-green-800 hover:text-white hover:font-semibold hover:cursor-pointer"
           >
             <span className="flex justify-start">
               <ChevronRight size={15} />
-              Profile
+              My Profile
             </span>
           </button>
           <button
-            onClick={() => handleNavigate("/")}
-            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
-             hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
+            onClick={() => handleNavigate("/orders")}
+            className="block w-full font-light text-left text-sm px-4 py-2 transition-all duration-200 hover:bg-green-800 hover:text-white hover:font-semibold hover:cursor-pointer"
           >
             <span className="flex justify-start">
               <ChevronRight size={15} />
-              Orders
+              My Orders
             </span>
           </button>
           <button
             onClick={logout}
-            className="block w-full font-light text-left text-sm rounded-4xl px-4 py-2 transition-all duration-200 
-             hover:bg-gradient-to-r hover:from-zinc-400 hover:to-zinc-400 hover:text-white hover:cursor-pointer"
+            className="block w-full font-light text-left text-sm px-4 py-2 transition-all duration-200 hover:bg-green-800 hover:text-white hover:font-semibold hover:cursor-pointer"
           >
             <span className="flex justify-start">
               <ChevronRight size={15} />

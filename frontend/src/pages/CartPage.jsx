@@ -40,14 +40,43 @@ const CartPage = () => {
       key: "rzp_test_YourKeyHere", // Replace with your Razorpay Key ID
       currency: "INR",
       amount: totalAmount * 100,
-      name: "The Grape Threads",
+      name: "Kitchen Cure Foods",
       description: "Order Payment",
-      image: "/logo.png",
-      handler: function (response) {
+      image: "src\assets\kcf-logo.jpg",
+      handler: async function (response) {
         alert(
           `Payment successful! Payment ID: ${response.razorpay_payment_id}`
         );
         clearCart();
+        // try {
+        //   // Create order entry in MongoDB via FastAPI
+        //   const orderData = {
+        //     userEmail: "customer@example.com", // replace with actual user context
+        //     paymentId: response.razorpay_payment_id,
+        //     items: cart,
+        //     subtotal,
+        //     tax,
+        //     totalAmount,
+        //     status: "Paid",
+        //     orderDate: new Date().toISOString(),
+        //   };
+
+        //   const res = await fetch("http://localhost:8000/orders", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(orderData),
+        //   });
+
+        //   if (!res.ok) throw new Error("Order creation failed");
+
+        //   clearCart();
+        //   navigate("/orders");
+        // } catch (error) {
+        //   console.error("Payment success but order save failed:", error);
+        //   alert(
+        //     "Payment successful, but order record failed. Please contact support."
+        //   );
+        // }
       },
       prefill: {
         name: "Customer Name",
@@ -194,8 +223,8 @@ const CartPage = () => {
             Pay Now
           </button>
 
-          <p className="text-sm text-gray-500 text-center mt-3">
-            Secure payment powered by Razorpay
+          <p className="font-light text-xs text-gray-500 text-center mt-3">
+            Secure payment powered by <span className="font-semibold text-blue-400">Razorpay</span>
           </p>
         </div>
       </div>

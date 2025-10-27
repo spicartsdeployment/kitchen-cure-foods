@@ -113,7 +113,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li>
               <button
-                className="px-6 py-2 mb-4 text-sm border border-green-800  rounded-lg hover:bg-green-800 hover:text-white cursor-pointer transform transition-transform duration-300 flex items-center gap-2"
+                className="px-6 py-2 mb-4 text-sm bg-green-800 rounded-lg hover:bg-green-700 text-white cursor-pointer transform transition-transform duration-300 flex items-center gap-2"
                 onClick={handleGetInTouch}
               >
                 Get in Touch <ArrowRight size={15} />
