@@ -275,7 +275,7 @@ const SignupPage = () => {
                 className="flex w-full font-semibold justify-center items-center text-green-500 border py-2 rounded-lg text-sm mt-2 hover:bg-gray-300 hover:text-green-800 hover:cursor-pointer"
               >
                 <img
-                  src="/src/assets/google-icon.png"
+                  src="https://www.svgrepo.com/show/475656/google-color.svg"
                   alt="Google"
                   className="w-4 h-4 mr-2"
                 />

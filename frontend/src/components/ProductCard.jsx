@@ -47,13 +47,13 @@ const ProductCard = ({ product, onAdd }) => {
         <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
 
         <p className="font-light text-sm">
-          {truncateDesc(product.description)}
+          {truncateDesc(product.caption)}
         </p>
         <p className="mt-2 mb-2">
           <span className="text-yellow-500 text-2xl mr-1">★</span>
-          <span className="text-md font-medium mr-1">4.75</span>
+          <span className="text-md font-medium mr-1">{product.rating}</span>
           <span className="text-sm font-light text-gray-500">
-            (225) Reviews
+            ({product.reviews}) Reviews
           </span>
         </p>
 

@@ -35,7 +35,7 @@ export const VideoWithThumbnail = ({ src,thumbnail }) => {
       {/* Actual playable video with poster */}
       <video
         src={src}
-        poster="src/assets/page-under-construction.jpg"  //{poster || thumbnail}
+        poster={thumbnail || "src/assets/page-under-construction.jpg"}  //{poster || thumbnail}
         controls
         className="w-full h-48 object-cover"
       />

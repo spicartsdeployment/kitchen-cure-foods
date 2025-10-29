@@ -50,7 +50,7 @@ export const testimonials = [
     role: "Wellness Coach",
     message: "Very professional and supportive team.",
     fullMessage:
-      "Very professional and supportive team. They guided me through my wellness journey step by step. Their holistic approach has truly changed my perspective on health.",
+      "Very professional and supportive team. They guided me through my wellness journey step by step. Their holistic approach has truly changed my perspective on health. Very professional and supportive team. They guided me through my wellness journey step by step. Their holistic approach has truly changed my perspective on health. Very professional and supportive team. They guided me through my wellness journey step by step. Their holistic approach has truly changed my perspective on health.",
   },
   {
     title: "The Power of Diet",
@@ -226,7 +226,7 @@ export const Differences = [
 export const DownloadableGuides = [
   {
     title: "Meal Planning for Diabetes Management",
-    text: "Comprehensive guide to managing blood sugar through strategic meal planning",
+    text: "Comprehensive guide to managing blood sugar through strategic meal planning.",
     type: "PDF Guide",
     pages: "24",
     url: "src/assets/apigateway-dg.pdf",
@@ -234,7 +234,7 @@ export const DownloadableGuides = [
   },
   {
     title: "Heart-Healthy Eating Principles",
-    text: "Evidence-based nutrition strategies for cardiovascular health",
+    text: "Evidence-based nutrition strategies for cardiovascular health.",
     type: "PDF Guide",
     pages: "24",
     url: "src/assets/apigateway-dg.pdf",
@@ -242,7 +242,7 @@ export const DownloadableGuides = [
   },
   {
     title: "Digestive Health Recipe Collection",
-    text: "Gut-friendly recepies designed by our nutritionists",
+    text: "Gut-friendly recepies designed by our nutritionists.",
     type: "Recipe Book",
     pages: "34",
     url: "src/assets/apigateway-dg.pdf",
@@ -257,7 +257,7 @@ export const carouselData = [
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     title: "Farm to Table: Our Regenerative Process",
     text: "Take a virtual tour of our regenerative farming practices",
-    thumbnail: "src/assets/page-under-construction.jpg",
+    thumbnail: "/src/assets/kcf-logo.jpg",
     buttonLabel: "Watch Video",
   },
   {
@@ -266,7 +266,7 @@ export const carouselData = [
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     title: "Cooking with Seasonal Ingredients",
     text: "Learn to maximize nutrition with seasonal, local produce",
-    thumbnail: "src/assets/page-under-construction.jpg",
+    thumbnail: "/src/assets/kcf-logo.jpg",
     buttonLabel: "Watch Video",
   },
   {
@@ -275,7 +275,25 @@ export const carouselData = [
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     title: "Third Video",
     text: "Another description for video three. This is the description for video one. This is the description for video one. This is the description for video one.",
-    thumbnail: "src/assets/page-under-construction.jpg",
+    thumbnail: "/src/assets/kcf-logo.jpg",
+    buttonLabel: "Watch Video",
+  },
+  {
+    id: 4,
+    video:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    title: "Fourth Video",
+    text: "Another description for video three. This is the description for video one. This is the description for video one. This is the description for video one.",
+    thumbnail: "/src/assets/kcf-logo.jpg",
+    buttonLabel: "Watch Video",
+  },
+  {
+    id: 5,
+    video:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    title: "Fifth Video",
+    text: "Another description for video three. This is the description for video one. This is the description for video one. This is the description for video one.",
+    thumbnail: "/src/assets/kcf-logo.jpg",
     buttonLabel: "Watch Video",
   },
 ];
@@ -346,3 +364,80 @@ export const profileFields = [
   },
   { label: "City", name: "city", type: "text", editable: true },
 ];
+
+export const featuredArticleData = {
+  id: 1,
+  category: "Farming",
+  title: "Understanding Regenerative Farming: A Complete Guide",
+  description:
+    "Learn how regenerative farming practices restore soil health and create nutrient-dense food.",
+  author: "Dr. Priya Sharma",
+  readTime: "8 min read",
+  date: "Dec 15, 2024",
+  image: "src/assets/farming.jpg",
+  content: `    
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition. 
+
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition.
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition. 
+      
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition.
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition. 
+      
+      Regenerative farming focuses on rebuilding soil organic matter and restoring
+      degraded soil biodiversity - resulting in both carbon drawdown and improving
+      the water cycle. 
+    
+      Practices include cover cropping, crop rotation, composting, reduced tillage,
+      and holistic livestock management. These techniques enhance ecosystem health
+      while maintaining productivity.
+   
+      By adopting regenerative farming, farmers not only sustain their yield but
+      also contribute to reversing climate change and improving food nutrition.
+  `,
+};

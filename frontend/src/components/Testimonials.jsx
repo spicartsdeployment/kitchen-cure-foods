@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { testimonials } from "../constants";
 import { ChevronLeftIcon, ChevronRightIcon, X } from "lucide-react";
+import DialogModal from "./DialogModal";
 
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,15 +43,19 @@ const TestimonialCarousel = () => {
         {slides.map((group, idx) => (
           <div
             key={idx}
-            className="flex-shrink-0 flex gap-6 w-full flex-nowrap"
+            className="flex-shrink-0 flex gap-2 w-full flex-nowrap"
           >
             {group.map((t, i) => (
               <div
                 key={i}
-                className="bg-white border border-gray-200 rounded-lg shadow p-4 text-center flex flex-col justify-between w-full md:w-1/3"
+                className="bg-white border border-gray-200 rounded-lg shadow p-6 text-center flex flex-col justify-between w-full md:w-1/3 mr-3 hover:shadow-xl hover:border hover:border-green-600 duration-300 transition"
               >
-                <h2 className="text-lg text-left mb-3">{t.title}</h2>
-                <p className="text font-light text-left mb-3">
+                <h2 className="text-xl font-semibold text-center">{t.title}</h2>
+                <p className="text-xs font-light text-gray-500 text-center mb-4">
+                  {t.name}
+                  <span className="ml-1 text-xs">- {t.role}</span>
+                </p>
+                <p className="text-md font-light text-left mb-3">
                   "
                   {t.fullMessage.length > 100
                     ? t.fullMessage.slice(0, 100) + "..."
@@ -58,10 +63,10 @@ const TestimonialCarousel = () => {
                   "
                 </p>
                 <button
-                  className="mt-4 text-right px-3 py-1 hover:cursor-pointer hover:text-gray-400 transition"
+                  className="mt-4 text-md text-white font-light bg-green-800 px-4 py-1 rounded-lg hover:bg-green-700 transition"
                   onClick={() => setSelectedTestimonial(t)}
                 >
-                  Read More...
+                  Read More
                 </button>
               </div>
             ))}
@@ -86,38 +91,13 @@ const TestimonialCarousel = () => {
       </div>
 
       {/* Modal Dialog */}
-      {selectedTestimonial && (
-        <div
-          className="fixed inset-0 bg-black opacity-90 flex items-center justify-center z-50"
-          onClick={() => setSelectedTestimonial(null)}
-        >
-          <div
-            className="bg-white rounded-lg p-6 max-w-lg w-full relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedTestimonial(null)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-            >
-              <X />
-            </button>
-            {/* <img
-              src={selectedTestimonial.img}
-              alt={selectedTestimonial.name}
-              className="w-20 h-20 rounded-full mx-auto mb-4"
-            /> */}
-            <h3 className="text-xl font-semibold text-green-800 text-center">
-              {selectedTestimonial.name}
-            </h3>
-            <p className="text-sm text-gray-500 text-center mb-4">
-              {selectedTestimonial.role}
-            </p>
-            <p className="font-light text-justify">
-              {selectedTestimonial.fullMessage}
-            </p>
-          </div>
-        </div>
-      )}
+      <DialogModal
+        isOpen={!!selectedTestimonial}
+        onClose={() => setSelectedTestimonial(null)}
+        title={selectedTestimonial?.name}
+        subtitle={selectedTestimonial?.role}
+        content={selectedTestimonial?.fullMessage}
+      />
     </div>
   );
 };

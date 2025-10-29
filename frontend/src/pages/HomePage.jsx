@@ -66,7 +66,7 @@ const HomePage = () => {
           {OfferedServices.map((service, index) => (
             <div
               key={index}
-              className="bg-white w-80 py-8 flex flex-col items-center text-center border border-gray-300 rounded-4xl p-4 shadow-lg"
+              className="bg-white w-80 py-8 flex flex-col items-center text-center border border-gray-300 rounded-4xl p-4 shadow-lg hover:border hover:border-green-600 hover:shadow-2xl transition-shadow duration-300"
             >
               <img
                 className="w-30 mb-6 object-contain"
@@ -97,7 +97,7 @@ const HomePage = () => {
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="w-full object-contain rounded-lg"
+                  className="w-full object-contain rounded-2xl shadow-lg hover:border hover:border-green-600 hover:shadow-2xl transition-shadow duration-300"
                 />
               </div>
               <h2 className="text-2xl font-medium mb-1">{service.title}</h2>
@@ -106,6 +106,7 @@ const HomePage = () => {
         </div>
       </div>
 
+      <ScrollToTop />
       <TestimonialCarousel2 />
 
       {/* Stats Counter */}
@@ -114,7 +115,9 @@ const HomePage = () => {
       </div>
 
       <div className="py-6 mb-4 flex flex-col justify-center">
-        <h2 className="py-4 font-medium text-4xl text-center">Testimonials</h2>
+        <h2 className="px-4 mb-2 text-3xl text-center sm:text-xl md:text-[52px] font-light leading-tight text-green-800">
+          Testimonials
+        </h2>
         <TestimonialCarousel />
       </div>
 
@@ -129,8 +132,6 @@ const HomePage = () => {
           </div>
         </div>
       )}
-
-      <ScrollToTop />
     </section>
   );
 };
