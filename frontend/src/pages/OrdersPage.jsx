@@ -10,7 +10,7 @@ const OrdersPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const email = "mounikumar@demo.com";
+    const email = "km@gmail.com";
     console.log("email: ", email);
     const getOrdersData = async () => {
       try {
