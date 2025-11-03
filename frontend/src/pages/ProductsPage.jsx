@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { getProducts } from "../services/productService";
+import { getProducts } from "../services/ProductService";
 import ProductCard from "../components/ProductCard";
 
 const ProductsPage = () => {

@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CartContext } from "../context/CartContext";
-import { getProductById } from "../services/productService";
+import { getProductById } from "../services/ProductService";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
