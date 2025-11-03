@@ -93,7 +93,7 @@ const FeedbackForm = () => {
             htmlFor="phone"
             className="text-xs font-medium block mb-1 text-gray-500"
           >
-            Phone Number<span className="text-red-600">*</span>
+            Mobile Number<span className="text-red-600">*</span>
           </label>
           <input
             id="phone"
@@ -103,7 +103,7 @@ const FeedbackForm = () => {
             onChange={handleChange}
             pattern="[0-9]*"
             inputMode="numeric"
-            placeholder="Enter Your Phone Number"
+            placeholder="Enter Your Mobile Number"
             className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2 placeholder:text-xs hover:border-green-600 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
             required
           />

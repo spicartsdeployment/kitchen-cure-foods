@@ -94,7 +94,7 @@ export const customerTestimonials = [
   },
   {
     id: 3,
-    text: "Great quality and on-time delivery. Will use again for sure!",
+  text: "Great quality and always on time. Will use again for sure!",
     author: "Emily Davis",
     role: "Founder, Startup Hub",
   },
@@ -218,7 +218,7 @@ export const Differences = [
   },
   {
     title: "Holistic System",
-    text: "From health consultations to customized food delivery, regenerative farms to circular economy models",
+  text: "From health consultations to customized food solutions, regenerative farms to circular economy models",
     image: "src/assets/holistic-system.jpg",
   },
 ];

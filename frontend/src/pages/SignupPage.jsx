@@ -33,9 +33,9 @@ const SignupPage = () => {
       if (!emailRegex.test(email)) errors.email = "Enter a valid email";
     }
 
-    if (!phone.trim()) errors.phone = "Phone number is required";
+    if (!phone.trim()) errors.phone = "Mobile number is required";
     else if (phone.length !== 10)
-      errors.phone = "Phone number must be exactly 10 digits";
+      errors.phone = "Mobile number must be exactly 10 digits";
 
     if (!password.trim()) errors.password = "Password is required";
     if (!confirmPassword.trim())
@@ -131,7 +131,7 @@ const SignupPage = () => {
             {/* Phone Number */}
             <input
               type="tel"
-              placeholder="Phone Number"
+              placeholder="Mobile Number"
               value={phone}
               onChange={(e) => {
                 const val = e.target.value.replace(/\D/g, "");

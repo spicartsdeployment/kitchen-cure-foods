@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 const OrdersPage = () => {
   const { email } = useParams();
   const [orders, setOrders] = useState([]);
+  console.log('orders:.............ooo ', orders);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const OrdersPage = () => {
     const getOrdersData = async () => {
       try {
         const ordersData = await getOrdersByEmail(email);
-        setOrders(ordersData);
+        setOrders(Array.isArray(ordersData) ? ordersData : []);
       } catch (error) {
         console.error("Error fetching orders:", error);
       }
@@ -77,9 +78,9 @@ const OrdersPage = () => {
           </h2>
 
           <div className="space-y-6">
-            {orders.map((order) => (
+            {orders.map((order, index) => (
               <div
-                key={order._id}
+                key={index}
                 className="border border-gray-300 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-5 flex flex-col justify-between"
               >
                 {/* Header */}
@@ -94,9 +95,9 @@ const OrdersPage = () => {
 
                 {/* Items */}
                 <ul className="p-3 space-y-2 text-sm text-gray-700 bg-gray-100 rounded-lg">
-                  {order.items.map((item) => (
+                  {order.items.map((item, index) => (
                     <li
-                      key={item._id}
+                      key={item._id || index}
                       className="flex justify-between items-center  p-2"
                     >
                       <div className="flex items-center space-x-2">

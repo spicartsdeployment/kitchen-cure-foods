@@ -34,7 +34,7 @@ const HomePage = () => {
             </span>
           </h2>
           <h2 className="mt-4 text-2xl">
-            Personalized Nutrition & Holistic Diabetes Care in Your Community
+            Personalized Nutrition & Care in Your Community
           </h2>
           <div className="mt-6">
             <button

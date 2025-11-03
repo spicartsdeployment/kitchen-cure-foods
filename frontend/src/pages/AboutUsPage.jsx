@@ -10,18 +10,14 @@ const AboutUsPage = () => {
           <h2 className="px-4 py-4 text-center text-4xl font-bold">
             How It Works
           </h2>
-          <p className="px-12 text-center font-light text-md">
-            At Kitchen Cure Foods, we are not just a food company. We are a
-            purpose driven movement committed to healing poeple and the planet -
-            holistically.
-          </p>
         </div>
 
         <div className="px-6 py-6 flex flex-col justify-center">
           <h2 className="px-4 py-4 text-center text-2xl font-bold">
             We started with a simple but powerful belief:
           </h2>
-          <h3 className="px-4 py-4 mb-4 font-medium text-xl text-center rounded-xl border border-green-500 bg-green-100">
+
+            <h3 className="px-4 py-4 mb-4 font-medium text-xl text-center rounded-xl border border-green-500 bg-green-100">
             Real health begins with real food, grown in real soil.
           </h3>
           <p className="px-4 text-center font-light text-md">
@@ -30,7 +26,46 @@ const AboutUsPage = () => {
             between nutrition science, traditional wisdom, and sustainable
             agriculture.
           </p>
+
+          
+          <p className="px-12 text-center font-light text-md">
+            <h2 className="px-4 py-4 text-center text-2xl font-bold text-black-700">
+              Healing Through Food, Work, and Wisdom
+            </h2>
+            At Kitchen Cure Foods, we are not just a food company. We are a
+            purpose driven movement committed to healing poeple and the planet -
+            holistically.
+          </p>
+
+            {/* Vision, Mission, Core Philosophy Section */}
+            <div className="mt-8 mb-8 flex flex-wrap justify-center items-center gap-8 w-full p-12">
+              {/* Single row: Vision, Mission, Core Philosophy */}
+              <div className="w-full flex flex-row flex-wrap justify-center items-stretch gap-8">
+                {/* Vision */}
+                <div className="basis-[30%] max-w-[30%] min-w-[300px] bg-blue-50 border-l-4 border-blue-400 rounded-xl shadow p-8 flex flex-col justify-between h-[470px]">
+                  <h2 className="text-2xl font-bold text-blue-700 mb-2 text-center">🪷 Vision</h2>
+                  <blockquote className="italic text-lg text-center text-blue-900 mb-4">“To make holistic healing accessible, joyful, and sustainable —<br />where every meal heals the body, balances the mind, and uplifts the spirit.”</blockquote>
+                  <p className="text-md text-center text-blue-800">KitchenCure Foods aims to become the world’s first healing ecosystem where food, yoga, Ayurveda, and Panchagavya are integrated into a seamless daily rhythm — beginning in Indian gated communities and expanding globally.</p>
+                </div>
+                {/* Mission */}
+                <div className="basis-[30%] max-w-[30%] min-w-[300px] bg-green-50 border-l-4 border-green-400 rounded-xl shadow p-8 flex flex-col justify-between h-[470px]">
+                  <h2 className="text-2xl font-bold text-green-700 mb-2 text-center">🌼 Mission</h2>
+                  <blockquote className="italic text-lg text-center text-green-900 mb-4">“To empower every individual to reclaim their health and happiness —<br />by integrating personalized food care, mindful living, and meaningful work.”</blockquote>
+                  <p className="text-md text-center text-green-800">KitchenCure Foods is committed to reversing lifestyle diseases through a holistic approach. We integrate personalized nutrition, mindful living, and meaningful employment for women as holistic healers.</p>
+                </div>
+                {/* Core Philosophy */}
+                <div className="basis-[30%] max-w-[30%] min-w-[300px] bg-yellow-50 border-l-4 border-yellow-400 rounded-xl shadow p-8 flex flex-col justify-between h-[470px]">
+                  <h2 className="text-2xl font-bold text-yellow-700 mb-2 text-center">🌿 Core Philosophy</h2>
+                  <blockquote className="italic text-lg text-center text-yellow-900 mb-4">“Healing is a journey of balance —<br />where nature, science, and community unite to nurture body, mind, and spirit.”</blockquote>
+                  <p className="text-md text-center text-yellow-800">We believe true healing happens when natural food, timely habits, and peace of mind are woven into daily life. Our philosophy blends science and spirituality, tradition and modernity, individuality and community. </p>
+                </div>
+              </div>
+            </div>
+
+        
         </div>
+
+
 
         <div className="px-6 py-6 flex flex-col justify-center">
           <h4 className="px-4 py-4 text-center text-2xl font-bold">

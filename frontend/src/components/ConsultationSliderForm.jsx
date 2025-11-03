@@ -23,11 +23,11 @@ const formConfig = {
     },
     {
       name: "phone",
-      label: "Phone",
+      label: "Mobile",
       type: "text",
       required: true,
       validate: (val) =>
-        /^\d{10}$/.test(val) || "Phone number must be exactly 10 digits",
+        /^\d{10}$/.test(val) || "Mobile number must be exactly 10 digits",
     },
     {
       name: "age",
@@ -273,10 +273,20 @@ const ConsultationSliderForm = () => {
   const renderField = (field) => {
     const value = formData[field.name] || "";
 
+    // Add a label for every field
+    const label = (
+      <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-1">
+        {field.label}
+        {field.required && <span className="text-red-500">*</span>}
+      </label>
+    );
+
     if (field.type === "text" && field.name === "description") {
       return (
         <>
+          {label}
           <textarea
+            id={field.name}
             name={field.name}
             placeholder={field.label}
             value={value}
@@ -292,9 +302,16 @@ const ConsultationSliderForm = () => {
         </>
       );
     } else if (field.type === "text") {
+      // Limit mobile number to 10 characters
+      const inputProps = {};
+      if (field.name === "phone") {
+        inputProps.maxLength = 10;
+      }
       return (
         <>
+          {label}
           <input
+            id={field.name}
             type="text"
             name={field.name}
             placeholder={field.label}
@@ -302,6 +319,7 @@ const ConsultationSliderForm = () => {
             onChange={(e) => handleChange(e, field)}
             required={field.required || false}
             className="text-sm w-full rounded-lg border border-green-500 shadow-sm px-3 py-2"
+            {...inputProps}
           />
           {errors[field.name] && (
             <span className="text-xs text-red-500 mt-1">
@@ -313,7 +331,9 @@ const ConsultationSliderForm = () => {
     } else if (field.type === "select") {
       return (
         <>
+          {label}
           <select
+            id={field.name}
             name={field.name}
             value={value}
             onChange={(e) => handleChange(e, field)}
@@ -337,7 +357,7 @@ const ConsultationSliderForm = () => {
     } else if (field.type === "radio") {
       return (
         <div className="flex flex-col space-y-1">
-          <span className="font-medium text-gray-700">{field.label}</span>
+          {label}
           {field.options.map((opt, i) => (
             <label
               key={i}
@@ -364,7 +384,7 @@ const ConsultationSliderForm = () => {
     } else if (field.type === "checkbox") {
       return (
         <div className="flex flex-col space-y-1">
-          <span className="font-medium text-gray-700">{field.label}</span>
+          {label}
           {field.options.map((opt, i) => (
             <label
               key={i}
